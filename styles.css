@@ -4,11 +4,33 @@ nav a[aria-current="page"]{text-decoration:underline;text-underline-offset:7px}.
 
 .academy-photo{grid-column:1/-1;margin:0 0 10px}.academy-photo img{display:block;width:100%;height:auto;border-radius:20px}.academy-photo figcaption{margin-top:12px;font-size:12px;color:#716578}
 
-/* Student photograph hero */
-.hero.hero-students{background-image:linear-gradient(90deg,rgba(23,14,36,.85) 0%,rgba(23,14,36,.64) 45%,rgba(23,14,36,.18) 100%),url("assets/academy-students.jpg");background-size:cover;background-position:center 30%;min-height:660px}
-.hero-students .hero-art{display:none}
-.hero-students .hero-lines{display:none}
-.hero-students .hero-content{padding-top:90px;padding-bottom:90px}
-.hero-students h1{max-width:650px;text-shadow:0 2px 18px rgba(0,0,0,.25)}
-.hero-students .hero-description,.hero-students .hero-note{color:#fff}
-@media(max-width:600px){.hero.hero-students{min-height:620px;background-position:52% center;background-image:linear-gradient(0deg,rgba(23,14,36,.92) 0%,rgba(23,14,36,.72) 55%,rgba(23,14,36,.32) 100%),url("assets/academy-students.jpg")}.hero-students .hero-content{padding-top:80px;padding-bottom:60px}}
+/* Professional photographic hero */
+.hero.hero-students{
+ min-height:640px;
+ background-color:#20162d;
+ background-image:linear-gradient(0deg,rgba(20,13,31,.92) 0%,rgba(20,13,31,.48) 35%,rgba(20,13,31,.02) 75%),url("assets/academy-students.jpg");
+ background-size:cover;background-position:center center;
+ align-items:flex-end;
+}
+.hero-students .hero-art,.hero-students .hero-lines{display:none}
+.hero-students .hero-content{padding-top:290px;padding-bottom:48px}
+.hero-students .eyebrow{margin-bottom:12px;color:#ffe2a8}
+.hero-students h1{font-size:clamp(48px,4.5vw,68px);line-height:1.04;max-width:620px;text-shadow:0 2px 14px rgba(0,0,0,.25)}
+.hero-students h1 br{display:none}
+.hero-students h1 em{display:inline}
+.hero-students .hero-description{font-size:18px;color:white;margin:16px 0 22px}
+.hero-students .hero-description br{display:none}
+.hero-students .hero-description br:after{content:" "}
+.hero-students .hero-actions{gap:24px;flex-wrap:wrap}
+.hero-students .hero-note{color:#eee5f2;margin-top:22px;font-size:11px}
+@media(min-width:1600px){.hero.hero-students{min-height:720px;background-position:center 38%}}
+@media(max-width:850px){.hero.hero-students{min-height:580px}.hero-students .hero-content{padding-top:260px;padding-bottom:36px}.hero-students h1{font-size:52px}}
+@media(max-width:600px){
+ .hero.hero-students{min-height:640px;background-image:linear-gradient(0deg,#20162d 0%,#20162d 43%,rgba(32,22,45,.1) 68%,rgba(32,22,45,0) 100%),url("assets/academy-students.jpg");background-size:100% 100%,auto 330px;background-repeat:no-repeat;background-position:center,center top}
+ .hero-students .hero-content{padding-top:310px;padding-bottom:35px}
+ .hero-students h1{font-size:46px;max-width:360px}
+ .hero-students .hero-description{font-size:16px;max-width:330px}
+ .hero-students .hero-actions{gap:18px}
+ .hero-students .button{padding:13px 20px}
+ .hero-students .hero-note{margin-top:24px}
+}
