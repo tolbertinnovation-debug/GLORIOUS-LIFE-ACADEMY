@@ -3,3 +3,12 @@ nav a[aria-current="page"]{text-decoration:underline;text-underline-offset:7px}.
 .leader-portrait{display:block;width:100%;height:auto;aspect-ratio:2/3;object-fit:contain;border-radius:13px;margin-bottom:22px;background:#faf6ee}.has-portrait{align-self:start}
 
 .academy-photo{grid-column:1/-1;margin:0 0 10px}.academy-photo img{display:block;width:100%;height:auto;border-radius:20px}.academy-photo figcaption{margin-top:12px;font-size:12px;color:#716578}
+
+/* Student photograph hero */
+.hero.hero-students{background-image:linear-gradient(90deg,rgba(23,14,36,.85) 0%,rgba(23,14,36,.64) 45%,rgba(23,14,36,.18) 100%),url("assets/academy-students.jpg");background-size:cover;background-position:center 30%;min-height:660px}
+.hero-students .hero-art{display:none}
+.hero-students .hero-lines{display:none}
+.hero-students .hero-content{padding-top:90px;padding-bottom:90px}
+.hero-students h1{max-width:650px;text-shadow:0 2px 18px rgba(0,0,0,.25)}
+.hero-students .hero-description,.hero-students .hero-note{color:#fff}
+@media(max-width:600px){.hero.hero-students{min-height:620px;background-position:52% center;background-image:linear-gradient(0deg,rgba(23,14,36,.92) 0%,rgba(23,14,36,.72) 55%,rgba(23,14,36,.32) 100%),url("assets/academy-students.jpg")}.hero-students .hero-content{padding-top:80px;padding-bottom:60px}}
