@@ -7,3 +7,31 @@ header{position:sticky;top:0;z-index:30;background:#fffdf9f5;backdrop-filter:blu
 @media(max-width:900px){.menu-toggle{display:block;border:1px solid #ddd1e3;background:transparent;border-radius:5px;padding:10px 15px;font-size:12px}nav{display:none;position:absolute;left:0;right:0;top:94px;background:#fffdf9;padding:20px 32px 28px;box-shadow:0 18px 24px #2b17351a;flex-direction:column;align-items:stretch;gap:0}nav.open{display:flex}nav>a{padding:12px 0;font-size:14px}nav>.button{padding:13px 20px;margin-top:12px}.section-heading{align-items:flex-start;flex-direction:column;gap:24px}.section-heading>p{max-width:600px}.commitments{grid-template-columns:repeat(2,minmax(0,1fr))}.sponsor{padding:42px;gap:35px}.hero.hero-students{min-height:620px}.hero-content{padding-top:280px;padding-bottom:45px}}
 @media(max-width:600px){.container{width:calc(100% - 36px)}.header-inner{min-height:78px}.brand{font-size:12px;gap:10px}.brand img{width:44px;height:44px}.brand small{font-size:9px}nav{top:78px;padding:16px 18px 24px}.section{padding:65px 0}.hero.hero-students{min-height:660px;background-size:auto 350px;background-position:center top}.hero:before{background:linear-gradient(0deg,#22172e 0%,#22172e 43%,rgba(34,23,46,.18) 70%,transparent 100%)}.hero-content{padding-top:325px;padding-bottom:38px}.hero h1{font-size:49px;max-width:360px}.hero h1 em{display:block}.hero-description{font-size:16px;margin:20px 0 25px}.hero-actions{align-items:flex-start;flex-direction:column;gap:22px}.hero .eyebrow{font-size:10px;margin-bottom:14px}.values-strip{padding:20px 0}.values-strip .container{display:grid;grid-template-columns:1fr 1fr;font-size:10px;gap:16px 10px}.values-strip span:before{margin-right:7px}.intro,.leaders,.home-leaders,.governance-grid,.commitments,.sponsor{grid-template-columns:1fr}.intro{gap:28px}.lead{font-size:18px}.leader,.home-leaders .leader{padding:25px}.home-leaders h3{font-size:23px}.sponsor{padding:32px;gap:28px}.footer-top{flex-direction:column;align-items:flex-start;gap:25px}.footer-bottom{flex-direction:column;gap:12px}.page-hero{padding:35px 0 50px}.page-hero h1{font-size:43px}.breadcrumbs{margin-bottom:25px}.related-pages{flex-direction:column}.leadership-controls button{flex:1}.section-heading{margin-bottom:30px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+/* Shared academy photograph on interior page heroes */
+.page-hero{
+ background-image:linear-gradient(0deg,rgba(25,16,36,.95) 0%,rgba(25,16,36,.55) 45%,rgba(25,16,36,.12) 100%),url("assets/academy-students.jpg");
+ background-size:cover;
+ background-position:center 35%;
+ min-height:420px;
+ display:flex;
+ align-items:flex-end;
+ padding:65px 0 55px;
+}
+.page-hero .container{position:relative}
+.page-hero h1{text-shadow:0 2px 18px rgba(0,0,0,.25)}
+.page-hero .breadcrumbs{color:#f0e8f5}
+@media(max-width:600px){
+ .page-hero{
+  min-height:430px;
+  background-color:#22172e;
+  background-image:linear-gradient(0deg,#22172e 0%,rgba(34,23,46,.9) 28%,rgba(34,23,46,.1) 68%,transparent 100%),url("assets/academy-students.jpg");
+  background-size:100% 100%,auto 300px;
+  background-position:center,center top;
+  background-repeat:no-repeat;
+  padding:225px 0 35px;
+ }
+ .page-hero .breadcrumbs{margin-bottom:18px}
+ .page-hero .eyebrow{margin-bottom:14px}
+ .page-hero h1{font-size:38px}
+}
