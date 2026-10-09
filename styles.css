@@ -38,3 +38,30 @@ header{position:sticky;top:0;z-index:30;background:#edf7fff5;backdrop-filter:blu
 
 /* Navy and sky blue identity */
 footer .brand,footer .footer-top p,footer .back-top{color:#e7f6ff}footer .footer-top p span{color:#afd8f1}footer .footer-bottom p{color:#b7d9ed}.leader{background:#f6fbff}.button.small{background:#0b2d50;color:#fff}.values-strip{color:#123c60}
+
+/* Academy editorial refresh */
+header{background:#092749;color:#e8f7ff;border-bottom-color:#224a70}
+header .brand{color:#e8f7ff}header .brand img{background:white;padding:3px}
+header nav a[aria-current=page]:not(.button){color:#8ddcff}
+header .button.small{background:#72ceff;color:#092749}
+header .menu-toggle{color:#e8f7ff;border-color:#4d7fa5}
+header.scrolled{box-shadow:0 8px 25px #05244126}
+.reading-progress{position:absolute;bottom:-2px;left:0;height:3px;width:100%;background:#70ceff;transform:scaleX(0);transform-origin:left;pointer-events:none}
+.hero .eyebrow{display:inline-block;border:1px solid #9cdcff70;background:#08253b66;border-radius:30px;padding:7px 14px;font-size:10px}
+.hero .hero-note{padding-left:16px;border-left:2px solid #70ceff}
+h2{letter-spacing:-.045em}.section-heading h2{max-width:760px}
+.intro{position:relative}.intro:before{content:"";position:absolute;top:60px;left:0;width:65px;height:4px;background:#4fbaf0}
+.pillar-layout{display:grid;grid-template-columns:1fr 1.25fr;gap:30px}.pillar-tabs{display:flex;flex-direction:column;gap:12px}
+.pillar-tabs button{display:flex;align-items:center;gap:20px;text-align:left;border:1px solid #a6d3ee;border-radius:10px;background:#dcefff;color:#38678b;padding:22px;cursor:pointer;font-size:12px}
+.pillar-tabs button span{flex:1;font-size:17px;font-weight:650;color:#123c60}
+.pillar-tabs button[aria-selected=true]{background:#0b2d50;color:#8ad8ff;border-color:#0b2d50}.pillar-tabs button[aria-selected=true] span{color:#eefaff}
+.pillar-panels{background:linear-gradient(135deg,#bce7ff,#dcefff);border:1px solid #9dd4f2;border-radius:14px;padding:48px;display:flex;align-items:center}
+.pillar-panels article{width:100%}.pillar-panels [hidden]{display:none}.pillar-panels h3{font:400 clamp(30px,3.4vw,43px)/1.15 Georgia,serif;margin-bottom:22px}.pillar-panels p{max-width:500px}
+.academy-explore{padding-top:20px}.leader{box-shadow:0 8px 25px #09274908}.governance-grid article{transition:background .2s}.governance-grid article:hover{background:#c4e7ff}
+.sponsor{position:relative;overflow:hidden;background:radial-gradient(ellipse at top right,#1b6392,#0b2d50 65%)}
+.footer-navigation{display:flex;flex-wrap:wrap;gap:12px 28px;padding:0 0 30px;font-size:12px;color:#b7e4ff}
+.footer-navigation a:hover{text-decoration:underline;text-underline-offset:5px}
+@media(max-width:900px){header nav{background:#092749}.pillar-layout{grid-template-columns:1fr}.pillar-tabs{display:grid;grid-template-columns:1fr 1fr}.pillar-tabs button{padding:18px;gap:12px}.pillar-tabs button span{font-size:14px}}
+@media(max-width:600px){.pillar-panels{padding:28px}.pillar-tabs{grid-template-columns:1fr}.pillar-tabs button{padding:18px}.intro:before{top:34px}.academy-explore{padding-top:0}.footer-navigation{gap:16px 22px}}
+
+.footer-navigation{position:static;box-shadow:none;background:transparent;flex-direction:row;align-items:center}.footer-navigation>a{font-size:12px;padding:0}.footer-navigation{display:flex}
