@@ -68,8 +68,7 @@ let history=load();
 const reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
 const botIcon='<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.6A8 8 0 1 1 21 12z"/><path d="M8.5 11h.01M12 11h.01M15.5 11h.01" stroke-width="2.6"/></svg>';
 const root=document.createElement('div');root.className='gla-bot';
-root.innerHTML='<div class="bot-greeting" hidden><button type="button" class="bot-greeting-close" aria-label="Dismiss message">×</button><strong>GLA Assistant</strong><p>Hi there! 👋 Have a question about classes or admissions? I can help.</p></div>'
-+'<section class="bot-panel" id="bot-panel" role="dialog" aria-modal="false" aria-labelledby="bot-title" hidden>'
+root.innerHTML='<section class="bot-panel" id="bot-panel" role="dialog" aria-modal="false" aria-labelledby="bot-title" hidden>'
 +'<header class="bot-header"><span class="bot-avatar"><img src="assets/school-logo.jpg" alt="" width="42" height="42"><i aria-hidden="true"></i></span><div><strong id="bot-title">GLA Assistant</strong><span>Replies instantly · Glorious Life Academy</span></div><button type="button" class="bot-reset" aria-label="Start a new conversation" title="New conversation">↺</button><button type="button" class="bot-close" aria-label="Close chat">×</button></header>'
 +'<div class="bot-log" role="log" aria-live="polite" aria-label="Conversation"></div>'
 +'<div class="bot-suggest" aria-label="Suggested questions"></div>'
@@ -79,7 +78,7 @@ root.innerHTML='<div class="bot-greeting" hidden><button type="button" class="bo
 +'<button type="button" class="bot-launcher" aria-controls="bot-panel" aria-expanded="false" aria-label="Open the Glorious Life Academy assistant"><span class="bot-launcher-icon">'+botIcon+'</span><span class="bot-launcher-close" aria-hidden="true">×</span><span class="bot-badge" aria-hidden="true">1</span></button>';
 document.body.appendChild(root);
 const $=s=>root.querySelector(s);
-const launcher=$('.bot-launcher'),panel=$('.bot-panel'),log=$('.bot-log'),input=$('#bot-input'),greeting=$('.bot-greeting'),suggest=$('.bot-suggest');
+const launcher=$('.bot-launcher'),panel=$('.bot-panel'),log=$('.bot-log'),input=$('#bot-input'),suggest=$('.bot-suggest');
 const time=()=>new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
 function chipHtml(c){if(typeof c==='string')return '<button type="button" class="bot-chip" data-ask="'+esc(c)+'">'+esc(c)+'</button>';if(c.wa&&WA)return '<a class="bot-chip wa'+(c.primary?' primary':'')+'" href="'+wa(c.wa)+'" target="_blank" rel="noopener noreferrer">'+(typeof waIcon==='string'?waIcon:'')+esc(c.label)+'</a>';return '';}
 function render(m,animate){const el=document.createElement('div');el.className='bot-msg '+m.from+(animate&&!reduce?' enter':'');el.innerHTML='<div class="bot-bubble">'+m.html+'<time>'+m.time+'</time></div>'+(m.chips&&m.chips.length?'<div class="bot-chips">'+m.chips.map(chipHtml).join('')+'</div>':'');log.appendChild(el);log.scrollTop=log.scrollHeight;}
@@ -92,16 +91,15 @@ const handoff=root.querySelector('.bot-handoff');
 function ask(q){q=q.trim();if(!q||busy)return;add({from:'user',html:esc(q),time:time()});setSuggestions([]);const res=answer(q)||{text:'Could you tell me a little more?'};if(res.fallback&&handoff)handoff.href=wa('Hello Glorious Life Academy, '+res.question);botSay(res);}
 function start(){log.innerHTML='';if(history.length){history.forEach(m=>render(m,false));setSuggestions([]);}else{botSay({text:'Hello and welcome to <strong>Glorious Life Academy</strong>! 👋 I’m the school assistant. Ask me about our classes from Nursery (ABC) to 9th Grade, admissions, our leadership or our values.'});setSuggestions(SUGGEST);}}
 let started=false;
-function open(){panel.hidden=false;root.classList.add('open');launcher.setAttribute('aria-expanded','true');launcher.setAttribute('aria-label','Close the assistant');greeting.hidden=true;$('.bot-badge').hidden=true;try{sessionStorage.setItem('gla-bot-seen','1');}catch(e){}if(!started){started=true;start();}setTimeout(()=>input.focus({preventScroll:true}),reduce?0:280);}
+function open(){panel.hidden=false;root.classList.add('open');launcher.setAttribute('aria-expanded','true');launcher.setAttribute('aria-label','Close the assistant');$('.bot-badge').hidden=true;try{sessionStorage.setItem('gla-bot-seen','1');}catch(e){}if(!started){started=true;start();}setTimeout(()=>input.focus({preventScroll:true}),reduce?0:280);}
 function close(focus){root.classList.remove('open');launcher.setAttribute('aria-expanded','false');launcher.setAttribute('aria-label','Open the Glorious Life Academy assistant');setTimeout(()=>{if(!root.classList.contains('open'))panel.hidden=true;},reduce?0:250);if(focus)launcher.focus();}
 launcher.addEventListener('click',()=>root.classList.contains('open')?close(false):open());
 $('.bot-close').addEventListener('click',()=>close(true));
 $('.bot-reset').addEventListener('click',()=>{history=[];save(history);start();input.focus();});
-greeting.addEventListener('click',e=>{if(e.target.closest('.bot-greeting-close')){greeting.hidden=true;try{sessionStorage.setItem('gla-bot-seen','1');}catch(err){}return;}open();});
 root.addEventListener('click',e=>{const chip=e.target.closest('button.bot-chip');if(chip)ask(chip.dataset.ask);});
 $('.bot-compose').addEventListener('submit',e=>{e.preventDefault();const q=input.value;input.value='';ask(q);});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&root.classList.contains('open')&&document.querySelector('.lightbox')?.hidden!==false)close(true);});
 let seen=null;try{seen=sessionStorage.getItem('gla-bot-seen');}catch(e){}
-if(seen)$('.bot-badge').hidden=true;else setTimeout(()=>{if(!root.classList.contains('open'))greeting.hidden=false;},4000);
+if(seen)$('.bot-badge').hidden=true;
 window.glaAssistant={answer};
 })();
