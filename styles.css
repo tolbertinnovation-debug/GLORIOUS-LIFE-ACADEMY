@@ -172,3 +172,78 @@ h2{letter-spacing:-.045em}.section-heading h2{max-width:760px}
 @media(max-width:900px){.floater.f2,.floater.f4,.floater.f5,.floater.f6{display:none}}
 @media(max-width:600px){.stage-grid{grid-template-columns:1fr}.grade-ladder{grid-template-columns:repeat(4,minmax(0,1fr))}.focus-list{grid-template-columns:1fr}.floater{width:40px;height:40px;font-size:18px}.floater.f0,.floater.f1,.floater.f8{display:none}.grade-ladder li:last-child:after{content:none}.grade-ladder small{font-size:8px;letter-spacing:.02em}.journey-stats strong{font-size:36px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important}.hero h1 em{color:#83d6ff;background:none}}
+
+/* Photography, welcome banner and student life */
+.est{font-style:normal;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8ddcff;margin-left:8px}
+.banner-frame{position:relative;border-radius:22px;overflow:hidden;box-shadow:0 30px 60px #0927492e;border:4px solid #fff;background:#dcefff}
+.banner-frame img{display:block;width:100%;height:auto;transition:transform 1.2s ease}
+.banner-frame:hover img{transform:scale(1.025)}
+.banner-frame:after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,#ffffff55 45%,transparent 60%);transform:translateX(-120%);pointer-events:none}
+.banner-frame.revealed:after{animation:sheen 1.8s ease .4s}
+@keyframes sheen{to{transform:translateX(120%)}}
+.pillar-cards{list-style:none;padding:0;margin:28px 0 0;position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.pillar-cards li{background:#fff;border:1px solid #b7dcf3;border-radius:16px;padding:22px;box-shadow:0 14px 30px #09274914;text-align:center;transition:transform .3s cubic-bezier(.2,.8,.3,1.4)}
+.pillar-cards li:hover{transform:translateY(-6px)}
+.pillar-cards strong{display:block;color:#0b2d50;font-size:16px;margin:12px 0 6px}
+.pillar-cards p{font-size:13px;margin:0;line-height:1.55}
+.pillar-icon{display:inline-grid;place-items:center;width:58px;height:58px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#2a8fc4,#0b2d50);color:#fff;box-shadow:0 0 0 5px #dcefff,0 8px 18px #0b2d5040}
+.pillar-cards li:hover .pillar-icon{animation:wiggle .6s ease}
+.pillar-cards.reveal li,.core-values.reveal li{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.8,.3,1.3);transition-delay:calc(var(--i,0)*110ms)}
+.pillar-cards.revealed li,.core-values.revealed li{opacity:1;transform:none}
+
+.life{background:linear-gradient(180deg,#dcefff,#edf7ff)}
+.life-mosaic{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:240px 240px;gap:16px}
+.life-mosaic .wide{grid-column:span 2;grid-row:span 1}
+.life-mosaic .tall{grid-row:span 2}
+.gallery-item{position:relative;margin:0;border-radius:16px;overflow:hidden;background:#cfe8f8;box-shadow:0 12px 28px #0927491a}
+.gallery-item a{display:block;height:100%;cursor:zoom-in}
+.gallery-item img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 25%;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.gallery-item:hover img{transform:scale(1.06)}
+.gallery-item figcaption{position:absolute;left:0;right:0;bottom:0;padding:40px 18px 14px;background:linear-gradient(0deg,#071e37e6,transparent);color:#fff;font-size:13px;font-weight:650;transform:translateY(8px);opacity:.92;transition:transform .3s,opacity .3s;pointer-events:none}
+.gallery-item:hover figcaption{transform:none;opacity:1}
+.zoom{position:absolute;top:12px;right:12px;display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:#ffffffd9;color:#0b2d50;font-size:16px;opacity:0;transform:scale(.7);transition:.3s}
+.gallery-item:hover .zoom,.gallery-item a:focus-visible .zoom{opacity:1;transform:none}
+.gallery-item a:focus-visible{outline:3px solid #38aee8;outline-offset:-3px}
+.life-mosaic.reveal .gallery-item,.gallery-grid.reveal .gallery-item{opacity:0;transform:translateY(30px) scale(.97);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.3,1.2)}
+.life-mosaic.revealed .gallery-item,.gallery-grid.revealed .gallery-item{opacity:1;transform:none}
+.gallery-item:nth-child(2){transition-delay:.1s}.gallery-item:nth-child(3){transition-delay:.2s}.gallery-item:nth-child(4){transition-delay:.3s}.gallery-item:nth-child(5){transition-delay:.4s}.gallery-item:nth-child(6){transition-delay:.5s}
+
+.gallery-filters{margin-bottom:26px}
+.gallery-grid{columns:3;column-gap:18px}
+.gallery-grid .gallery-item{break-inside:avoid;margin-bottom:18px}
+.gallery-grid .gallery-item img{height:auto}
+.gallery-item[hidden]{display:none}
+.gallery-hero{background-image:linear-gradient(0deg,rgba(5,24,46,.95) 0%,rgba(5,24,46,.55) 45%,rgba(5,24,46,.12) 100%),url("assets/photos/pe-class.jpg");background-position:center 30%}
+.scripture{background:radial-gradient(ellipse at top right,#1b6392,#0b2d50 65%);color:#fff;text-align:center}
+.scripture blockquote{margin:0 auto;max-width:860px}
+.scripture blockquote p{font:400 clamp(24px,3vw,36px)/1.4 Georgia,serif;color:#eefaff;margin-bottom:22px}
+.scripture cite{font-style:normal;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#8ddcff}
+
+.core-values{list-style:none;padding:0;margin:0 0 40px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.core-values li{display:flex;align-items:center;gap:16px;background:#f6fbff;border:1px solid #b7dcf3;border-radius:14px;padding:18px 20px}
+.core-values span{display:grid;place-items:center;width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,#0b2d50,#2875a4);color:#ffe08a;font:700 24px Georgia,serif;flex-shrink:0}
+.core-values strong{font-size:18px;color:#0b2d50}
+.photo-pair{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:34px}
+.photo-pair img{width:100%;height:320px;object-fit:cover;object-position:center 20%;border-radius:16px;box-shadow:0 14px 30px #0927491f}
+.photo-pair img:nth-child(2){margin-top:40px}
+.photo-pair.reveal img{opacity:0;transform:translateY(24px) rotate(-2deg);transition:opacity .7s,transform .7s cubic-bezier(.2,.8,.3,1.2)}
+.photo-pair.reveal img:nth-child(2){transform:translateY(24px) rotate(2deg);transition-delay:.15s}
+.photo-pair.revealed img{opacity:1;transform:none}
+.sponsor-photo{padding-bottom:70px}
+.sponsor-photo .gallery-item{height:clamp(260px,45vw,520px)}
+
+.lightbox{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;gap:12px;padding:20px;background:#04142acc;backdrop-filter:blur(8px);animation:fadeIn .25s ease}
+.lightbox[hidden]{display:none}
+.lightbox figure{margin:0;max-width:min(1200px,100%);display:flex;flex-direction:column;align-items:center}
+.lightbox img{max-width:100%;max-height:80vh;border-radius:12px;box-shadow:0 30px 70px #0008;opacity:0;transform:scale(.97);transition:opacity .3s,transform .3s}
+.lightbox img.loaded{opacity:1;transform:none}
+.lightbox figcaption{display:flex;justify-content:space-between;gap:20px;width:100%;color:#e6f6ff;font-size:14px;padding:14px 4px 0}
+.lightbox-count{color:#8ddcff;white-space:nowrap}
+.lightbox button{flex-shrink:0;border:0;border-radius:50%;width:48px;height:48px;background:#ffffff1f;color:#fff;font-size:30px;line-height:1;cursor:pointer;transition:background .2s}
+.lightbox button:hover{background:#70ceff;color:#092749}
+.lightbox-close{position:absolute;top:18px;right:18px}
+body.lightbox-open{overflow:hidden}
+@keyframes fadeIn{from{opacity:0}}
+
+@media(max-width:1050px){.pillar-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.core-values{grid-template-columns:repeat(2,minmax(0,1fr))}.life-mosaic{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:auto}.life-mosaic .gallery-item{height:260px}.life-mosaic .wide{grid-column:span 2}.life-mosaic .tall{grid-row:auto;height:420px}.gallery-grid{columns:2}}
+@media(max-width:600px){.banner-frame{border-radius:14px;border-width:2px}.pillar-cards{margin:20px 0 0;grid-template-columns:1fr 1fr;gap:10px}.pillar-cards li{padding:16px 12px}.pillar-cards p{display:none}.pillar-cards strong{font-size:14px}.life-mosaic{grid-template-columns:1fr}.life-mosaic .wide{grid-column:auto}.life-mosaic .tall{grid-row:auto;height:420px}.gallery-grid{columns:1}.core-values{grid-template-columns:1fr}.photo-pair img{height:220px}.lightbox{padding:10px}.lightbox-prev,.lightbox-next{position:absolute;bottom:20px}.lightbox-prev{left:20px}.lightbox-next{right:20px}.lightbox img{max-height:70vh}}
