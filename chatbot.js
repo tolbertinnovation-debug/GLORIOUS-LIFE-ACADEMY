@@ -58,7 +58,7 @@ if(g){const n=+(g[1]||g[2]);if(n>=1&&n<=9){const k=stageFor(n);return{text:'Yes,
 if(topical){best=topical;bestScore=topScore;}
 const fees=INTENTS.find(it=>it.id==='fees'),feeScore=score(text,fees);if(feeScore>=2){best=fees;bestScore=feeScore;}
 if(best&&bestScore>=1.5)return best.reply(raw.trim()&&best.reply.length?'Hello Glorious Life Academy, '+raw.trim():undefined);
-return{text:'I’m not sure about that one yet, but our office can help. Would you like me to send your question to them on WhatsApp?',chips:[{label:'Yes, ask the office',wa:'Hello Glorious Life Academy, '+raw.trim()},'What classes do you offer?','Admissions'],fallback:true};}
+return{text:'That’s a great question for our office team. 🙋 Tap below to continue this chat on <strong>WhatsApp</strong>. Your question is already typed in, so just press send and they will reply to you directly.',chips:[{label:'Continue on WhatsApp',wa:'Hello Glorious Life Academy, '+raw.trim(),primary:true},'What classes do you offer?','Admissions'],fallback:true,question:raw.trim()};}
 
 const SUGGEST=['What classes do you offer?','How do I enrol my child?','School fees','Who founded the school?','What are your values?'];
 const KEY='gla-bot-history';
@@ -81,14 +81,15 @@ document.body.appendChild(root);
 const $=s=>root.querySelector(s);
 const launcher=$('.bot-launcher'),panel=$('.bot-panel'),log=$('.bot-log'),input=$('#bot-input'),greeting=$('.bot-greeting'),suggest=$('.bot-suggest');
 const time=()=>new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
-function chipHtml(c){if(typeof c==='string')return '<button type="button" class="bot-chip" data-ask="'+esc(c)+'">'+esc(c)+'</button>';if(c.wa&&WA)return '<a class="bot-chip wa" href="'+wa(c.wa)+'" target="_blank" rel="noopener noreferrer">'+(typeof waIcon==='string'?waIcon:'')+esc(c.label)+'</a>';return '';}
+function chipHtml(c){if(typeof c==='string')return '<button type="button" class="bot-chip" data-ask="'+esc(c)+'">'+esc(c)+'</button>';if(c.wa&&WA)return '<a class="bot-chip wa'+(c.primary?' primary':'')+'" href="'+wa(c.wa)+'" target="_blank" rel="noopener noreferrer">'+(typeof waIcon==='string'?waIcon:'')+esc(c.label)+'</a>';return '';}
 function render(m,animate){const el=document.createElement('div');el.className='bot-msg '+m.from+(animate&&!reduce?' enter':'');el.innerHTML='<div class="bot-bubble">'+m.html+'<time>'+m.time+'</time></div>'+(m.chips&&m.chips.length?'<div class="bot-chips">'+m.chips.map(chipHtml).join('')+'</div>':'');log.appendChild(el);log.scrollTop=log.scrollHeight;}
 function add(m,animate=true){history.push(m);save(history);render(m,animate);}
 function setSuggestions(list){suggest.innerHTML=list.map(chipHtml).join('');suggest.hidden=!list.length;}
 let busy=false;
 function botSay(res){busy=true;const t=document.createElement('div');t.className='bot-msg bot typing';t.innerHTML='<div class="bot-bubble"><span></span><span></span><span></span></div>';log.appendChild(t);log.scrollTop=log.scrollHeight;
 setTimeout(()=>{t.remove();add({from:'bot',html:res.text,chips:(res.chips||[]).filter(c=>typeof c==='string'||WA),time:time()});busy=false;},reduce?0:Math.min(1400,500+res.text.length*4));}
-function ask(q){q=q.trim();if(!q||busy)return;add({from:'user',html:esc(q),time:time()});setSuggestions([]);botSay(answer(q)||{text:'Could you tell me a little more?'});}
+const handoff=root.querySelector('.bot-handoff');
+function ask(q){q=q.trim();if(!q||busy)return;add({from:'user',html:esc(q),time:time()});setSuggestions([]);const res=answer(q)||{text:'Could you tell me a little more?'};if(res.fallback&&handoff)handoff.href=wa('Hello Glorious Life Academy, '+res.question);botSay(res);}
 function start(){log.innerHTML='';if(history.length){history.forEach(m=>render(m,false));setSuggestions([]);}else{botSay({text:'Hello and welcome to <strong>Glorious Life Academy</strong>! 👋 I’m the school assistant. Ask me about our classes from Nursery (ABC) to 9th Grade, admissions, our leadership or our values.'});setSuggestions(SUGGEST);}}
 let started=false;
 function open(){panel.hidden=false;root.classList.add('open');launcher.setAttribute('aria-expanded','true');launcher.setAttribute('aria-label','Close the assistant');greeting.hidden=true;$('.bot-badge').hidden=true;try{sessionStorage.setItem('gla-bot-seen','1');}catch(e){}if(!started){started=true;start();}setTimeout(()=>input.focus({preventScroll:true}),reduce?0:280);}
