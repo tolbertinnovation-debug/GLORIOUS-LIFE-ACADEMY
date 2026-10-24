@@ -247,3 +247,127 @@ body.lightbox-open{overflow:hidden}
 
 @media(max-width:1050px){.pillar-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.core-values{grid-template-columns:repeat(2,minmax(0,1fr))}.life-mosaic{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:auto}.life-mosaic .gallery-item{height:260px}.life-mosaic .wide{grid-column:span 2}.life-mosaic .tall{grid-row:auto;height:420px}.gallery-grid{columns:2}}
 @media(max-width:600px){.banner-frame{border-radius:14px;border-width:2px}.pillar-cards{margin:20px 0 0;grid-template-columns:1fr 1fr;gap:10px}.pillar-cards li{padding:16px 12px}.pillar-cards p{display:none}.pillar-cards strong{font-size:14px}.life-mosaic{grid-template-columns:1fr}.life-mosaic .wide{grid-column:auto}.life-mosaic .tall{grid-row:auto;height:420px}.gallery-grid{columns:1}.core-values{grid-template-columns:1fr}.photo-pair img{height:220px}.lightbox{padding:10px}.lightbox-prev,.lightbox-next{position:absolute;bottom:20px}.lightbox-prev{left:20px}.lightbox-next{right:20px}.lightbox img{max-height:70vh}}
+
+/* Admissions & contact */
+.whatsapp-button{background:#25d366;color:#05301a;gap:12px}
+.whatsapp-button:hover{background:#4be082}
+.admissions-band{padding-top:0}
+.admissions-band-inner{display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:center;border-radius:22px;padding:56px;color:#fff;background:radial-gradient(ellipse at 85% 0%,#2a8fc4,#0b2d50 60%);position:relative;overflow:hidden}
+.admissions-band-inner:before{content:"ABC";position:absolute;right:-20px;bottom:-60px;font:700 200px/1 Georgia,serif;color:#ffffff0d;pointer-events:none}
+.admissions-band h2{font-size:clamp(30px,3.4vw,46px);margin-bottom:16px}
+.admissions-band p:not(.eyebrow){color:#c9e9fc;margin:0}
+.admissions-band-actions{display:flex;flex-direction:column;align-items:flex-start;gap:18px;position:relative}
+.admissions-band .text-link{color:#8ddcff}
+.admissions-hero{background-image:linear-gradient(0deg,rgba(5,24,46,.95) 0%,rgba(5,24,46,.55) 45%,rgba(5,24,46,.12) 100%),url("assets/photos/uniform-students.jpg");background-position:center 9%}
+.admission-steps{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;counter-reset:step;position:relative}
+.admission-steps:before{content:"";position:absolute;top:36px;left:12%;right:12%;border-top:2px dashed #9cd1f0}
+.admission-steps li{position:relative;background:#fff;border:1px solid #b7dcf3;border-radius:18px;padding:28px;box-shadow:0 12px 28px #0927490f}
+.admission-steps h3{font-size:20px;margin:18px 0 10px}
+.admission-steps p{font-size:14px;margin:0}
+.step-number{display:grid;place-items:center;width:46px;height:46px;border-radius:50%;background:#0b2d50;color:#ffe08a;font:700 20px Georgia,serif;box-shadow:0 0 0 6px #dcefff}
+.admission-steps.reveal li,.class-list.reveal li{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.8,.3,1.3);transition-delay:calc(var(--i,0)*90ms)}
+.class-list.reveal li{transition-delay:calc(var(--i,0)*45ms)}
+.admission-steps.revealed li,.class-list.revealed li{opacity:1;transform:none}
+.class-list{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:12px}
+.class-list li{background:#fff;border:1px solid #9cd1f0;border-radius:30px;padding:10px 20px;font-weight:650;color:#123c60;font-size:14px}
+.class-list li:nth-child(-n+3){background:#0b2d50;border-color:#0b2d50;color:#eefaff}
+.enquire-layout{display:grid;grid-template-columns:1fr 1.25fr;gap:50px;align-items:start}
+.enquire-intro h2{margin-bottom:20px}
+.contact-card{display:flex;align-items:center;gap:16px;background:#fff;border:1px solid #b7dcf3;border-radius:16px;padding:18px 20px;margin:26px 0}
+.contact-card strong{display:block;color:#0b2d50}
+.contact-card a{color:#087ab8;font-weight:700;font-size:18px}
+.contact-icon{display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:#25d366;color:#fff;flex-shrink:0}
+.contact-icon svg{width:26px;height:26px}
+.enquire-photo{display:block;width:100%;max-width:340px;height:340px;object-fit:cover;object-position:center 15%;border-radius:20px;box-shadow:0 18px 36px #0927491f;margin-top:10px}
+.enquiry-form{background:#fff;border:1px solid #b7dcf3;border-radius:22px;padding:36px;box-shadow:0 20px 45px #09274914}
+.enquiry-type{border:0;padding:0;margin:0 0 22px}
+.enquiry-type legend{font-size:14px;font-weight:700;color:#0b2d50;margin-bottom:12px}
+.enquiry-type label{display:inline-block;margin:0 8px 8px 0;cursor:pointer}
+.enquiry-type input{position:absolute;opacity:0;width:1px;height:1px}
+.enquiry-type span{display:inline-block;border:1px solid #9cd1f0;border-radius:30px;padding:9px 16px;font-size:13px;font-weight:650;color:#153d63;background:#edf7ff;transition:background .2s,color .2s}
+.enquiry-type input:checked+span{background:#0b2d50;border-color:#0b2d50;color:#eefaff}
+.enquiry-type input:focus-visible+span{outline:3px solid #38aee8;outline-offset:2px}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.field{margin-bottom:18px}
+.field label{display:block;font-size:13px;font-weight:700;color:#0b2d50;margin-bottom:7px}
+.req{color:#c0392b}.optional{font-weight:400;color:#6a8aa6}
+.field input,.field select,.field textarea{width:100%;border:1px solid #9cd1f0;border-radius:10px;background:#f6fbff;color:#102d4c;padding:12px 14px;font:inherit;font-size:15px;transition:border-color .2s,box-shadow .2s}
+.field textarea{resize:vertical;min-height:110px}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:#38aee8;box-shadow:0 0 0 4px #38aee833;background:#fff}
+.field [aria-invalid=true]{border-color:#c0392b;box-shadow:0 0 0 3px #c0392b22}
+.field-error{color:#b03a2e;font-size:12px;font-weight:650;margin:6px 0 0}
+.enquiry-form .whatsapp-button{width:100%;font-size:15px;padding:17px;border:0;cursor:pointer}
+.form-note{font-size:12px;text-align:center;margin:12px 0 0}
+.form-status{margin-top:18px;border-radius:12px;padding:16px 18px;font-size:14px;animation:rise .4s ease}
+.form-status.success{background:#e5f9ee;border:1px solid #8fdcae;color:#14532d}
+.form-status.warning{background:#fff6e0;border:1px solid #f0d27a;color:#6b4e00}
+.form-status a{text-decoration:underline;font-weight:700;margin-left:4px}
+.faq details{background:#f6fbff;border:1px solid #b7dcf3;border-radius:14px;padding:0 22px;margin-bottom:12px}
+.faq summary{display:flex;justify-content:space-between;gap:20px;padding:20px 0;cursor:pointer;list-style:none;font-weight:700;color:#0b2d50}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary span{font-size:22px;line-height:1;transition:transform .25s;color:#1779ad}
+.faq details[open] summary span{transform:rotate(45deg)}
+.faq details p{margin:0 0 20px;animation:rise .35s ease}
+.faq details a{color:#087ab8;text-decoration:underline}
+
+@media(max-width:1050px){.admissions-band-inner{grid-template-columns:1fr;padding:42px}.enquire-layout{grid-template-columns:1fr}.enquire-photo{display:none}}
+@media(max-width:900px){.admission-steps{grid-template-columns:1fr}.admission-steps:before{display:none}}
+@media(max-width:600px){.admissions-band-inner{padding:30px 24px;border-radius:16px}.field-row{grid-template-columns:1fr;gap:0}.enquiry-form{padding:22px 18px;border-radius:16px}}
+
+/* WhatsApp chat widget */
+.wa-chat{position:fixed;right:22px;bottom:22px;z-index:90;display:flex;flex-direction:column;align-items:flex-end;gap:14px;font-size:14px}
+.wa-launcher{position:relative;width:62px;height:62px;border:0;border-radius:50%;background:#25d366;color:#fff;cursor:pointer;box-shadow:0 10px 28px #0b2d5050;display:grid;place-items:center;transition:transform .25s cubic-bezier(.2,.8,.3,1.4),background .2s;animation:fabIn .6s cubic-bezier(.2,.8,.3,1.4) .8s both}
+.wa-launcher:hover{transform:scale(1.07);background:#20bd5a}
+.wa-launcher:before{content:"";position:absolute;inset:0;border-radius:50%;background:#25d366;z-index:-1;animation:waPulse 2.4s ease-out infinite}
+.wa-launcher svg{width:32px;height:32px}
+.wa-launcher-icon,.wa-launcher-close{grid-area:1/1;transition:transform .3s,opacity .3s}
+.wa-launcher-close{font-size:34px;line-height:1;opacity:0;transform:rotate(-90deg)}
+.wa-chat.open .wa-launcher-icon{opacity:0;transform:rotate(90deg)}
+.wa-chat.open .wa-launcher-close{opacity:1;transform:none}
+.wa-chat.open .wa-launcher:before{animation:none}
+.wa-badge{position:absolute;top:-2px;right:-2px;display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#e53935;color:#fff;font-size:12px;font-weight:800;border:2px solid #fff;animation:pop .4s cubic-bezier(.2,.8,.3,1.5) 2s both}
+.wa-badge[hidden]{display:none}
+@keyframes fabIn{from{opacity:0;transform:translateY(30px) scale(.6)}}
+@keyframes waPulse{0%{transform:scale(1);opacity:.55}100%{transform:scale(1.7);opacity:0}}
+.wa-greeting{position:relative;max-width:270px;background:#fff;border-radius:16px 16px 4px 16px;padding:14px 34px 14px 16px;box-shadow:0 14px 34px #0b2d5033;cursor:pointer;animation:rise .45s cubic-bezier(.2,.8,.3,1.3)}
+.wa-greeting strong{display:block;color:#0b2d50;font-size:13px}
+.wa-greeting p{margin:4px 0 0;font-size:13px;line-height:1.5;color:#33536f}
+.wa-greeting-close{position:absolute;top:6px;right:8px;border:0;background:none;color:#7b93a8;font-size:20px;cursor:pointer;line-height:1}
+.wa-panel{width:min(370px,calc(100vw - 32px));border-radius:20px;overflow:hidden;background:#fff;box-shadow:0 24px 60px #04142a4d;transform-origin:bottom right;animation:panelOpen .3s cubic-bezier(.2,.8,.3,1.2)}
+.wa-chat:not(.open) .wa-panel{animation:panelClose .25s ease forwards}
+@keyframes panelOpen{from{opacity:0;transform:translateY(20px) scale(.92)}}
+@keyframes panelClose{to{opacity:0;transform:translateY(20px) scale(.92)}}
+.wa-header{display:flex;align-items:center;gap:12px;padding:16px 16px 16px 18px;background:linear-gradient(135deg,#075e54,#128c7e);color:#fff}
+.wa-header img{width:44px;height:44px;border-radius:50%;background:#fff;padding:2px;flex-shrink:0}
+.wa-header div{flex:1;min-width:0}
+.wa-header strong{display:block;font-size:15px}
+.wa-header span{font-size:12px;color:#d6f5ec}
+.wa-close{border:0;background:#ffffff26;color:#fff;width:32px;height:32px;border-radius:50%;font-size:22px;line-height:1;cursor:pointer}
+.wa-close:hover{background:#ffffff40}
+.wa-body{min-height:200px;max-height:min(46vh,340px);overflow-y:auto;padding:18px 16px;background:#efeae2 radial-gradient(#d9d2c5 1px,transparent 1.2px) 0 0/18px 18px}
+.wa-typing{display:inline-flex;gap:4px;background:#fff;border-radius:0 12px 12px 12px;padding:12px 14px;box-shadow:0 1px 1px #0000001a}
+.wa-typing[hidden]{display:none}
+.wa-typing span{width:7px;height:7px;border-radius:50%;background:#9aa9b5;animation:typing 1s infinite}
+.wa-typing span:nth-child(2){animation-delay:.15s}.wa-typing span:nth-child(3){animation-delay:.3s}
+@keyframes typing{0%,60%,100%{transform:translateY(0);opacity:.5}30%{transform:translateY(-5px);opacity:1}}
+.wa-bubble{position:relative;max-width:88%;background:#fff;border-radius:0 12px 12px 12px;padding:10px 12px 20px;box-shadow:0 1px 1px #0000001a;animation:rise .35s ease}
+.wa-bubble:before{content:"";position:absolute;top:0;left:-7px;border:8px solid transparent;border-top-color:#fff;border-right-color:#fff;border-width:0 8px 8px 0}
+.wa-bubble p{margin:0 0 6px;color:#1f2d38;font-size:14px;line-height:1.5}
+.wa-bubble time{position:absolute;right:10px;bottom:5px;font-size:10px;color:#8696a0}
+.wa-quick{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.wa-quick[hidden]{display:none}
+.wa-quick a{background:#fff;border:1px solid #25d366;color:#0b6b3a;border-radius:20px;padding:8px 14px;font-size:13px;font-weight:650;transition:background .2s,color .2s;animation:pop .35s cubic-bezier(.2,.8,.3,1.5) both}
+.wa-quick a:nth-child(2){animation-delay:.08s}.wa-quick a:nth-child(3){animation-delay:.16s}.wa-quick a:nth-child(4){animation-delay:.24s}
+.wa-quick a:hover,.wa-quick a:focus-visible{background:#25d366;color:#fff}
+.wa-compose{display:flex;gap:8px;padding:12px;background:#f0f2f5;border-top:1px solid #e3e6ea}
+.wa-compose input{flex:1;min-width:0;border:0;border-radius:22px;padding:11px 16px;font:inherit;font-size:16px;background:#fff;color:#1f2d38}
+.wa-compose input:focus-visible{outline:2px solid #25d366}
+.wa-compose button{flex-shrink:0;width:44px;height:44px;border:0;border-radius:50%;background:#25d366;color:#fff;cursor:pointer;display:grid;place-items:center;transition:transform .2s}
+.wa-compose button:hover{transform:scale(1.08)}
+.wa-compose svg{width:20px;height:20px}
+.wa-footnote{display:flex;align-items:center;justify-content:center;gap:6px;margin:0;padding:8px 0 10px;background:#f0f2f5;font-size:11px;color:#667781}
+.wa-footnote svg{width:13px;height:13px;color:#25d366}
+body.lightbox-open .wa-chat{display:none}
+@media(max-width:600px){.wa-chat{right:14px;bottom:14px}.wa-launcher{width:56px;height:56px}.wa-greeting{max-width:230px}.wa-panel{width:calc(100vw - 28px)}}
+@media(prefers-reduced-motion:reduce){.wa-launcher:before{display:none}}
+.enquiry-form .whatsapp-button:disabled{background:#c9d6df;color:#5a6b78;cursor:not-allowed;transform:none}

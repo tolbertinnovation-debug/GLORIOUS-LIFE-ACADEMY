@@ -1,3 +1,5 @@
+// Academy WhatsApp number for enquiries, digits only with country code (e.g. '231771234567'). Leave empty to hide WhatsApp links.
+const ACADEMY_WHATSAPP='';
 const button=document.querySelector('.menu-toggle');
 const nav=document.querySelector('#navigation');
 function closeMenu(returnFocus=false){if(!button||!nav)return;button.setAttribute('aria-expanded','false');nav.classList.remove('open');if(returnFocus)button.focus();}
@@ -28,7 +30,7 @@ filterButtons.forEach(b=>b.addEventListener('click',()=>{activeFilter=b.dataset.
 leaderSearch?.addEventListener('input',filterLeaders);
 document.querySelector('#leader-reset')?.addEventListener('click',()=>{if(leaderSearch)leaderSearch.value='';activeFilter='all';filterButtons.forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.filter==='all')));filterLeaders();leaderSearch?.focus();});
 const linkedTab=tabs.find(t=>t.dataset.hash&&'#'+t.dataset.hash===location.hash);if(linkedTab){selectTab(linkedTab);document.querySelector('.stage-explorer')?.scrollIntoView();}
-const revealTargets=document.querySelectorAll('.section-heading,.intro,.leader,.governance-grid article,.commitments li,.sponsor,.pillar-layout,.page-cta,.journey-stats,.journey-track,.grade-ladder,.banner-frame,.pillar-cards,.life-mosaic,.gallery-grid,.core-values,.photo-pair,.scripture blockquote,.sponsor-photo');
+const revealTargets=document.querySelectorAll('.section-heading,.intro,.leader,.governance-grid article,.commitments li,.sponsor,.pillar-layout,.page-cta,.journey-stats,.journey-track,.grade-ladder,.banner-frame,.pillar-cards,.life-mosaic,.gallery-grid,.core-values,.photo-pair,.scripture blockquote,.sponsor-photo,.admission-steps,.class-list,.admissions-band-inner,.enquire-layout');
 if('IntersectionObserver' in window&&!window.matchMedia('(prefers-reduced-motion:reduce)').matches){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('revealed');observer.unobserve(entry.target);}}),{rootMargin:'0px 0px -8% 0px'});revealTargets.forEach(el=>{el.classList.add('reveal');observer.observe(el);});}
 function countUp(el){const target=Number(el.dataset.count);const start=performance.now();const step=now=>{const t=Math.min(1,(now-start)/1200);el.textContent=Math.round(target*(1-Math.pow(1-t,3)));if(t<1)requestAnimationFrame(step);};el.textContent='0';requestAnimationFrame(step);}
 const counters=document.querySelectorAll('[data-count]');
@@ -54,4 +56,48 @@ box.addEventListener('click',e=>{if(e.target===box)closeBox();});
 box.addEventListener('touchstart',e=>{touchX=e.touches[0].clientX;},{passive:true});
 box.addEventListener('touchend',e=>{if(touchX===null)return;const dx=e.changedTouches[0].clientX-touchX;if(Math.abs(dx)>50)show(current+(dx<0?1:-1));touchX=null;});
 document.addEventListener('keydown',e=>{if(box.hidden)return;if(e.key==='Escape')closeBox();if(e.key==='ArrowRight')show(current+1);if(e.key==='ArrowLeft')show(current-1);if(e.key==='Tab'){const f=[...box.querySelectorAll('button:not([hidden])')];const i=f.indexOf(document.activeElement);if(e.shiftKey&&i<=0){e.preventDefault();f[f.length-1].focus();}else if(!e.shiftKey&&i===f.length-1){e.preventDefault();f[0].focus();}}});
+}
+const waDigits=ACADEMY_WHATSAPP.replace(/\D/g,'');
+const waUrl=text=>'https://wa.me/'+waDigits+(text?'?text='+encodeURIComponent(text):'');
+const waDisplay=waDigits.startsWith('231')?'+231 '+waDigits.slice(3).replace(/(\d{2})(\d{3})(\d+)/,'$1 $2 $3'):'+'+waDigits;
+document.querySelectorAll('[data-whatsapp-link]').forEach(a=>{if(waDigits){a.href=waUrl('Hello Glorious Life Academy, I would like to make an enquiry.');a.target='_blank';a.rel='noopener noreferrer';a.textContent=waDisplay;}else a.closest('.contact-card')?.remove();});
+const waIcon='<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.5-.2z"/></svg>';
+const store={get:k=>{try{return sessionStorage.getItem(k);}catch(e){return null;}},set:(k,v)=>{try{sessionStorage.setItem(k,v);}catch(e){}}};
+if(waDigits){
+const quickReplies=[['Admissions enquiry','Hello Glorious Life Academy, I would like to ask about admissions for my child.'],['Book a school visit','Hello Glorious Life Academy, I would like to book a visit to the school.'],['Fees & requirements','Hello Glorious Life Academy, please could you share the fees and admission requirements?'],['Something else','Hello Glorious Life Academy, I have a question.']];
+const chat=document.createElement('div');chat.className='wa-chat';
+chat.innerHTML='<div class="wa-greeting" hidden><button type="button" class="wa-greeting-close" aria-label="Dismiss message">×</button><strong>Glorious Life Academy</strong><p>Hello! 👋 Questions about admissions? Chat with us on WhatsApp.</p></div>'
++'<section class="wa-panel" id="wa-panel" role="dialog" aria-modal="false" aria-labelledby="wa-title" hidden><header class="wa-header"><img src="assets/school-logo.jpg" alt="" width="44" height="44"><div><strong id="wa-title">Glorious Life Academy</strong><span>Admissions &amp; enquiries</span></div><button type="button" class="wa-close" aria-label="Close chat">×</button></header>'
++'<div class="wa-body"><div class="wa-typing" aria-hidden="true"><span></span><span></span><span></span></div><div class="wa-bubble" hidden><p>Hello and welcome to Glorious Life Academy! 👋</p><p>How can we help you today? Choose an option or type your message below.</p><time></time></div>'
++'<div class="wa-quick" hidden>'+quickReplies.map(([label,text])=>'<a href="'+waUrl(text)+'" target="_blank" rel="noopener noreferrer">'+label+'</a>').join('')+'</div></div>'
++'<form class="wa-compose"><label class="visually-hidden" for="wa-input">Type your message</label><input id="wa-input" type="text" placeholder="Type a message…" autocomplete="off" maxlength="500"><button type="submit" aria-label="Send message on WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M3 20.5 21 12 3 3.5l.01 6.6L15 12 3.01 13.9z"/></svg></button></form>'
++'<p class="wa-footnote">'+waIcon+'Chat continues in WhatsApp</p></section>'
++'<button type="button" class="wa-launcher" aria-controls="wa-panel" aria-expanded="false" aria-label="Chat with us on WhatsApp"><span class="wa-launcher-icon">'+waIcon+'</span><span class="wa-launcher-close" aria-hidden="true">×</span><span class="wa-badge" aria-hidden="true">1</span></button>';
+document.body.appendChild(chat);
+const launcher=chat.querySelector('.wa-launcher'),panel=chat.querySelector('.wa-panel'),greeting=chat.querySelector('.wa-greeting'),input=chat.querySelector('#wa-input');
+const reduceMotion=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+let welcomed=false;
+function welcome(){if(welcomed)return;welcomed=true;const now=new Date();chat.querySelector('.wa-bubble time').textContent=now.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});const reveal=()=>{chat.querySelector('.wa-typing').hidden=true;chat.querySelector('.wa-bubble').hidden=false;chat.querySelector('.wa-quick').hidden=false;};if(reduceMotion)reveal();else setTimeout(reveal,1100);}
+function openChat(){panel.hidden=false;chat.classList.add('open');launcher.setAttribute('aria-expanded','true');launcher.setAttribute('aria-label','Close chat');greeting.hidden=true;chat.querySelector('.wa-badge').hidden=true;store.set('gla-chat-seen','1');welcome();setTimeout(()=>input.focus({preventScroll:true}),reduceMotion?0:300);}
+function closeChat(returnFocus){chat.classList.remove('open');launcher.setAttribute('aria-expanded','false');launcher.setAttribute('aria-label','Chat with us on WhatsApp');setTimeout(()=>{if(!chat.classList.contains('open'))panel.hidden=true;},reduceMotion?0:250);if(returnFocus)launcher.focus();}
+launcher.addEventListener('click',()=>chat.classList.contains('open')?closeChat(false):openChat());
+chat.querySelector('.wa-close').addEventListener('click',()=>closeChat(true));
+greeting.addEventListener('click',e=>{if(e.target.closest('.wa-greeting-close')){greeting.hidden=true;store.set('gla-chat-seen','1');return;}openChat();});
+chat.querySelector('.wa-compose').addEventListener('submit',e=>{e.preventDefault();const text=input.value.trim();const w=window.open(waUrl(text?'Hello Glorious Life Academy, '+text:'Hello Glorious Life Academy, I would like to make an enquiry.'),'_blank');if(w)w.opener=null;input.value='';});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&chat.classList.contains('open')&&document.querySelector('.lightbox')?.hidden!==false)closeChat(true);});
+if(store.get('gla-chat-seen'))chat.querySelector('.wa-badge').hidden=true;else setTimeout(()=>{if(!chat.classList.contains('open'))greeting.hidden=false;},4000);
+}
+const enquiryForm=document.querySelector('#enquiry-form');
+if(enquiryForm){
+const status=enquiryForm.querySelector('.form-status');
+if(!waDigits){status.hidden=false;status.className='form-status warning';status.textContent='Online WhatsApp enquiries are coming soon. Please check back shortly.';enquiryForm.querySelector('button[type="submit"]').disabled=true;}
+function setError(field,message){const input=enquiryForm.querySelector('#'+field);const error=enquiryForm.querySelector('#'+field+'-error');input.setAttribute('aria-invalid',String(!!message));error.textContent=message||'';error.hidden=!message;return !message;}
+enquiryForm.querySelectorAll('input,select,textarea').forEach(el=>el.addEventListener('input',()=>{if(el.getAttribute('aria-invalid')==='true')setError(el.id,'');}));
+enquiryForm.addEventListener('submit',e=>{e.preventDefault();const data=new FormData(enquiryForm);const type=data.get('type');const parent=data.get('parent').trim();const phone=data.get('phone').trim();const child=data.get('child').trim();const cls=data.get('class');const message=data.get('message').trim();
+const checks=[setError('parent-name',parent?'':'Please enter your name.'),setError('parent-phone',phone.replace(/\D/g,'').length>=7?'':'Please enter a phone number we can reach you on.'),setError('child-class',cls||type!=='Admissions'?'':'Please choose the class you are enquiring about.')];
+if(checks.includes(false)){enquiryForm.querySelector('[aria-invalid="true"]')?.focus();return;}
+const lines=['Hello Glorious Life Academy, I would like to make an enquiry.','','Enquiry: '+type,'Parent/guardian: '+parent,'Phone: '+phone];if(child)lines.push('Child: '+child);if(cls)lines.push('Class: '+cls);if(message)lines.push('','Message: '+message);const text=lines.join('\n');
+status.hidden=false;
+if(!waDigits){status.className='form-status warning';status.textContent='WhatsApp enquiries are not available yet. Please check back soon.';return;}
+const url=waUrl(text);const opened=window.open(url,'_blank');if(opened)opened.opener=null;status.className='form-status success';status.innerHTML='Thank you, '+parent.replace(/[<>&"]/g,'')+'. WhatsApp is opening with your message ready. Just press send. <a href="'+url+'" target="_blank" rel="noopener noreferrer">Open WhatsApp again</a>';if(!opened)location.href=url;});
 }
