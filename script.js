@@ -90,6 +90,7 @@ if(store.get('gla-chat-seen'))chat.querySelector('.wa-badge').hidden=true;else s
 const enquiryForm=document.querySelector('#enquiry-form');
 if(enquiryForm){
 const status=enquiryForm.querySelector('.form-status');
+if(!waDigits){status.hidden=false;status.className='form-status warning';status.textContent='Online WhatsApp enquiries are coming soon. Please check back shortly.';enquiryForm.querySelector('button[type="submit"]').disabled=true;}
 function setError(field,message){const input=enquiryForm.querySelector('#'+field);const error=enquiryForm.querySelector('#'+field+'-error');input.setAttribute('aria-invalid',String(!!message));error.textContent=message||'';error.hidden=!message;return !message;}
 enquiryForm.querySelectorAll('input,select,textarea').forEach(el=>el.addEventListener('input',()=>{if(el.getAttribute('aria-invalid')==='true')setError(el.id,'');}));
 enquiryForm.addEventListener('submit',e=>{e.preventDefault();const data=new FormData(enquiryForm);const type=data.get('type');const parent=data.get('parent').trim();const phone=data.get('phone').trim();const child=data.get('child').trim();const cls=data.get('class');const message=data.get('message').trim();

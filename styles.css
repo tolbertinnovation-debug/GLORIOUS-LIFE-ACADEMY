@@ -370,3 +370,4 @@ body.lightbox-open{overflow:hidden}
 body.lightbox-open .wa-chat{display:none}
 @media(max-width:600px){.wa-chat{right:14px;bottom:14px}.wa-launcher{width:56px;height:56px}.wa-greeting{max-width:230px}.wa-panel{width:calc(100vw - 28px)}}
 @media(prefers-reduced-motion:reduce){.wa-launcher:before{display:none}}
+.enquiry-form .whatsapp-button:disabled{background:#c9d6df;color:#5a6b78;cursor:not-allowed;transform:none}
