@@ -28,6 +28,10 @@ Animations are CSS/vanilla JS only and switch off automatically for visitors who
 
 ## GLA Assistant (chatbot)
 
-`chatbot.js` adds the school assistant to every page. It runs entirely in the browser (no server or API key), answering common questions from the website's own content: classes and stages, admissions steps, leadership, values, sponsor, uniform, P.E. and more. It tolerates typos, remembers the conversation while the visitor moves between pages, and for anything it does not know (fees, dates, documents, location, hours) it says so and offers to send the question to the office on WhatsApp.
+`chatbot.js` adds the school assistant to every page. It runs entirely in the browser (no server or API key) and answers in three layers:
 
-To teach it something new, add or edit an entry in the `INTENTS` list in `chatbot.js`: `keys` are the words or phrases that trigger it, and `reply` returns the answer text plus optional follow-up `chips`. Once the Academy confirms details such as fees or its address, replace the matching "ask the office" replies with the real answer.
+1. **Curated answers** (`INTENTS` and `PEOPLE` in `chatbot.js`) for the most common questions: classes and grades, admissions, fees (no prices), each leader by name or role, values, mission, commitments, sponsor, uniform, P.E. and more.
+2. **Website search**: anything else is looked up in the text of every page on the site (fetched and indexed when the chat opens), and the best matching passage is shown with a link to its page. New content added to any page is picked up automatically.
+3. **WhatsApp handoff**: if the website does not cover the question, the assistant says so and offers "Continue on WhatsApp" with the question pre-filled.
+
+To improve an answer, add or edit an entry in `INTENTS`: `keys` are the trigger words or phrases, and `reply` returns the text plus optional follow-up `chips`. Once the Academy confirms details such as its address or office hours, update the matching "ask the office" replies.
