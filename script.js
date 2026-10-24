@@ -1,5 +1,5 @@
 // Academy WhatsApp number for enquiries, digits only with country code (e.g. '231771234567'). Leave empty to hide WhatsApp links.
-const ACADEMY_WHATSAPP='';
+const ACADEMY_WHATSAPP='231886421636';
 const button=document.querySelector('.menu-toggle');
 const nav=document.querySelector('#navigation');
 function closeMenu(returnFocus=false){if(!button||!nav)return;button.setAttribute('aria-expanded','false');nav.classList.remove('open');if(returnFocus)button.focus();}
